@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "مرحبا، الهند"
+  },
+  "Sidebar": {
+    "newChat": "دردشة جديدة",
+    "search": "بحث",
+    "liveChats": "دردشات مباشرة",
+    "library": "المكتبة",
+    "createFolder": "إنشاء مجلد"
+  }
+}

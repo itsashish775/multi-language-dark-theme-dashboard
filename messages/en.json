@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "Hello India!"
+  },
+  "Sidebar": {
+    "newChat": "New Chat",
+    "search": "Search",
+    "liveChats": "Live chats",
+    "library": "Library",
+    "createFolder": "Create folder"
+  }
+}

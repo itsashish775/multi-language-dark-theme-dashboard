@@ -1,0 +1,12 @@
+{
+  "HomePage": {
+    "title": "नमस्ते, भारत"
+  },
+  "Sidebar": {
+    "newChat": "नई चैट",
+    "search": "खोजें",
+    "liveChats": "लाइव चैट्स",
+    "library": "लाइब्रेरी",
+    "createFolder": "फोल्डर बनाएं"
+  }
+}
