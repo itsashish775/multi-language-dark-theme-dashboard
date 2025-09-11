@@ -85,8 +85,8 @@ export default function LoginPage() {
             <Button
               variant={"secondary"}
               className='w-full py-3'
-              // onClick={handleLogin}
-              onClick={() => router.push(`/${locale}/chat`)}
+              onClick={handleLogin}
+              // onClick={() => router.push(`/${locale}/chat`)}
             >
               <svg
                 className='w-4 h-4 sm:w-5 sm:h-5'

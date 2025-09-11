@@ -1,23 +1,25 @@
-import { NextIntlClientProvider } from "next-intl";
+// app/[locale]/layout.tsx  (or wherever your locale layout is)
 import getRequestConfig from "@/i18n/request";
-import ThemeProviderWrapper from "@/app/providers/ThemeProviderWrapper";
+import AppProviders from "../providers/AppProvider";
 
 export default async function LocaleLayout(props: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { children, params: paramsPromise } = props;
-  const params = await paramsPromise;
+  const { children, params } = props;
+  const requestedLocale = params?.locale ?? "hi";
+
+  // getRequestConfig should return { locale, messages }
   const { locale, messages } = await getRequestConfig({
-    requestLocale: Promise.resolve(params.locale || "en"),
+    requestLocale: Promise.resolve(requestedLocale),
   });
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
-        </NextIntlClientProvider>
+        <AppProviders locale={locale} messages={messages ?? {}}>
+          {children}
+        </AppProviders>
       </body>
     </html>
   );
