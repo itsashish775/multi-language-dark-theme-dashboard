@@ -1,38 +1,46 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { Globe, ChevronDown } from "lucide-react";
+
+const languages = [
+  { code: "en", label: "English" },
+  { code: "hi", label: "हिंदी" },
+  { code: "ar", label: "عربي" },
+];
 
 export default function LanguageSwitcher() {
-  const pathname = usePathname(); // e.g., "/hi/page" or "/en/page"
+  const pathname = usePathname();
+  const router = useRouter();
+  const segments = pathname.split("/").filter(Boolean);
+  const currentLocale = segments[0];
+  const restOfPath = segments.slice(1).join("/");
 
-  // Split pathname into segments and replace the first segment (locale)
-  const segments = pathname.split("/").filter(Boolean); // ["hi", "page"]
-
-  // Get rest of path after locale
-  const restOfPath = segments.slice(1).join("/"); // "page" or ""
+  const onSelectLanguage = (code: string) => {
+    if (code !== currentLocale) {
+      router.push(`/${code}/${restOfPath}`);
+    }
+  };
 
   return (
-    <div className='text-sm font-medium text-gray-700 dark:text-gray-300 space-x-4 select-none'>
-      <Link
-        href={`/en/${restOfPath}`}
-        className='hover:text-blue-600 dark:hover:text-blue-400'
-      >
-        English
-      </Link>
-      <span className='text-gray-400 dark:text-gray-500'>|</span>
-      <Link
-        href={`/hi/${restOfPath}`}
-        className='hover:text-blue-600 dark:hover:text-blue-400'
-      >
-        हिंदी
-      </Link>
-      <span className='text-gray-400 dark:text-gray-500'>|</span>
-      <Link
-        href={`/ar/${restOfPath}`}
-        className='hover:text-blue-600 dark:hover:text-blue-400'
-      >
-        عربي
-      </Link>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant='ghost' className='flex items-center gap-2'>
+          <Globe className='w-4 h-4' />
+          <span className='hidden sm:inline'>
+            {languages.find((l) => l.code === currentLocale)?.label || "Language"}
+          </span>
+          <ChevronDown className='w-4 h-4' />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        {languages.map((lang) => (
+          <DropdownMenuItem key={lang.code} onClick={() => onSelectLanguage(lang.code)}>
+            {lang.label}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

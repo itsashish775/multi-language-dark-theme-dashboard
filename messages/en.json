@@ -8,5 +8,25 @@
     "liveChats": "Live chats",
     "library": "Library",
     "createFolder": "Create folder"
+  },
+  "Welcome": {
+    "title": "Welcome To ASG AI",
+    "description": "Experience GPT-4o through ASG AI, optimized for content writing. This model excels at understanding context and providing detailed, accurate responses."
+  },
+  "ChatInput": {
+    "placeholder": "Ask questions, or type '/' for commands",
+    "footer": "© Alsulaiman Group 2024. All rights reserved.",
+    "privacy": "Privacy Policy and Conditions"
+  },
+  "LoginPage": {
+    "title": "ASG AI",
+    "welcome": "Welcome to",
+    "subtitle": "Sign in with your Microsoft account to continue",
+    "continueWithMicrosoft": "Continue with Microsoft",
+    "or": "OR",
+    "loginAsGuest": "Login as Guest",
+    "rightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions"
   }
 }

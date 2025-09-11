@@ -69,7 +69,7 @@
   --chart-3: oklch(0.12 0 0);
   --chart-4: oklch(0.985 0 0);
   --chart-5: oklch(0.7 0 0);
-  --sidebar: oklch(0.08 0 0); /* Same as background */
+  --sidebar: oklch(25.7% 0 0); /* Same as background */
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.5 0.15 180); /* Teal for active items */
   --sidebar-primary-foreground: oklch(0.985 0 0);

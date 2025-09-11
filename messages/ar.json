@@ -8,5 +8,26 @@
     "liveChats": "دردشات مباشرة",
     "library": "المكتبة",
     "createFolder": "إنشاء مجلد"
+  },
+  "Welcome": {
+    "title": "مرحبًا بك في ASG AI",
+    "description": "اختبر GPT-4o عبر ASG AI، المحسّن لكتابة المحتوى. هذا النموذج بارع في فهم السياق وتقديم إجابات مفصلة ودقيقة."
+  },
+  "ChatInput": {
+    "placeholder": "اطرح الأسئلة، أو اكتب '/' للأوامر",
+    "footer": "© مجموعة السليمان 2024. جميع الحقوق محفوظة.",
+    "privacy": "سياسة الخصوصية والشروط"
+  },
+
+  "LoginPage": {
+    "title": "الذكاء الاصطناعي ASG",
+    "welcome": "مرحباً بك في",
+    "subtitle": "سجّل الدخول باستخدام حساب Microsoft للمتابعة",
+    "continueWithMicrosoft": "تسجيل الدخول باستخدام Microsoft",
+    "or": "أو",
+    "loginAsGuest": "تسجيل الدخول كضيف",
+    "rightsReserved": "جميع الحقوق محفوظة.",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsConditions": "الشروط والأحكام"
   }
 }
