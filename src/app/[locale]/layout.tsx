@@ -9,7 +9,7 @@ export default async function LocaleLayout(props: {
   const { children, params: paramsPromise } = props;
   const params = await paramsPromise;
   const { locale, messages } = await getRequestConfig({
-    requestLocale: Promise.resolve(params.locale || "hi"),
+    requestLocale: Promise.resolve(params.locale || "en"),
   });
 
   return (

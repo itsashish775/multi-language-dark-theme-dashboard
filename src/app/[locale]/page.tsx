@@ -15,12 +15,35 @@ import LanguageSwitcher from "../components/LanguageSwitcher";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { LogIn, User } from "lucide-react";
 import Image from "next/image";
+import { useMsal } from "@azure/msal-react";
+import { loginRequest } from "@/lib/authConfig";
 
 export default function LoginPage() {
+  const { instance, accounts } = useMsal();
   const t = useTranslations("LoginPage");
   const router = useRouter();
   const pathname = usePathname();
   const locale = pathname.split("/").filter(Boolean)[0] || "en";
+
+  const handleLogin = async () => {
+    try {
+      const response = await instance.loginPopup(loginRequest);
+
+      // ✅ Get access token for APIs (Graph or your backend)
+      const account = response.account;
+      const tokenResponse = await instance.acquireTokenSilent({
+        ...loginRequest,
+        account,
+      });
+
+      console.log("Access Token:", tokenResponse.accessToken);
+
+      // After successful login → redirect
+      router.push(`/${locale}/chat`);
+    } catch (error) {
+      console.error("MSAL login failed:", error);
+    }
+  };
 
   return (
     <div className='relative flex flex-col min-h-screen bg-neutral text-neutral overflow-hidden'>
@@ -35,8 +58,8 @@ export default function LoginPage() {
         <div></div>
 
         <nav className='flex items-center gap-6'>
-          <LanguageSwitcher />
           <ThemeSwitcher />
+          <LanguageSwitcher />
         </nav>
       </header>
 
@@ -62,7 +85,8 @@ export default function LoginPage() {
             <Button
               variant={"secondary"}
               className='w-full py-3'
-              onClick={() => router.push(`/${locale}/asgai-page`)}
+              // onClick={handleLogin}
+              onClick={() => router.push(`/${locale}/chat`)}
             >
               <svg
                 className='w-4 h-4 sm:w-5 sm:h-5'
@@ -83,10 +107,13 @@ export default function LoginPage() {
               <Separator className='flex-1 bg-neutral-700' />
             </div>
 
-            <div className='w-full flex items-center justify-center gap-2 border border-neutral-700 rounded-md py-2 text-neutral-300 bg-neutral-900'>
+            <Button
+              variant={"transparent"}
+              className='w-full py-3 text-primary hover:text-secondary'
+            >
               <User className='mr-2 h-5 w-5' />
               {t("loginAsGuest")}
-            </div>
+            </Button>
           </CardContent>
 
           <CardFooter className='flex justify-center text-xs text-neutral-500'>
