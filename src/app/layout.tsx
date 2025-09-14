@@ -7,9 +7,5 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  return (
-    <html>
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }

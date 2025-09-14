@@ -7,6 +7,7 @@ import ThemeProviderWrapper from "@/app/providers/ThemeProviderWrapper";
 import { MsalProvider } from "@azure/msal-react";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from "@/lib/authConfig";
+import ReduxProvider from "./ReduxProvider";
 const msalInstance = new PublicClientApplication(msalConfig);
 
 export default function AppProviders({
@@ -20,10 +21,12 @@ export default function AppProviders({
 }) {
   // locale must be a plain string (not undefined / Promise)
   return (
-    <NextIntlClientProvider locale={locale ?? "en"} messages={messages}>
-      <ThemeProviderWrapper>
-        <MsalProvider instance={msalInstance}>{children}</MsalProvider>
-      </ThemeProviderWrapper>
-    </NextIntlClientProvider>
+    <ReduxProvider>
+      <NextIntlClientProvider locale={locale ?? "en"} messages={messages}>
+        <ThemeProviderWrapper>
+          <MsalProvider instance={msalInstance}>{children}</MsalProvider>
+        </ThemeProviderWrapper>
+      </NextIntlClientProvider>
+    </ReduxProvider>
   );
 }
