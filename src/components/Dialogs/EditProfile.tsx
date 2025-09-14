@@ -1,5 +1,6 @@
 // EditProfile.tsx
 
+import { useState } from "react";
 import CommonDialog from ".";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -7,6 +8,13 @@ import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 
 export function EditProfile() {
+  const [isLoading, setIsLoading] = useState(false);
+  const submitHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 2000);
+    // Handle form submission logic here
+  };
   return (
     <CommonDialog triggerLabel='Edit Profile'>
       <div className='w-full'>
@@ -16,7 +24,7 @@ export function EditProfile() {
           instructions.
         </p>
 
-        <form className='space-y-4'>
+        <form className='space-y-4' onSubmit={submitHandler}>
           <div className='space-y-2'>
             <Label htmlFor='folderName'>Folder Name</Label>
             <Input id='folderName' placeholder='Enter' />
@@ -36,8 +44,12 @@ export function EditProfile() {
           </div>
 
           <div className='flex justify-end space-x-2 pt-4'>
-            <Button variant='outline'>Cancel</Button>
-            <Button variant={"default"}>Create</Button>
+            <Button variant='outline' type='submit'>
+              Cancel
+            </Button>
+            <Button variant={"default"} type='submit' isLoading={isLoading}>
+              Create
+            </Button>
           </div>
         </form>
       </div>

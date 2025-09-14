@@ -41,12 +41,12 @@ export default function ChatInput({
           </Button>
         </div>
 
-        <div className='text-center mt-2'>
+        {/* <div className='text-center mt-2'>
           <p className='text-xs text-muted-foreground'>
             {t("footer")}{" "}
             <span className='text-secondary ml-1'>{t("privacy")}</span>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
