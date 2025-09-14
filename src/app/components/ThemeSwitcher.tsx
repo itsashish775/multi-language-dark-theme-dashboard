@@ -9,12 +9,12 @@ export default function ThemeSwitcher() {
 
   return (
     <div
-      className='relative flex items-center w-16 h-8 rounded-full bg-background cursor-pointer transition-colors'
+      className='relative flex items-center w-16 h-8 rounded-full bg-sidebar cursor-pointer transition-colors'
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
       {/* Sliding knob */}
       <div
-        className={`absolute top-1 left-1 h-6 w-6 rounded-full bg-cyan-500 flex items-center justify-center transition-transform ${
+        className={`absolute top-1 left-1 h-6 w-6 rounded-full bg-secondary flex items-center justify-center transition-transform ${
           isDark ? "translate-x-0" : "translate-x-8"
         }`}
       >

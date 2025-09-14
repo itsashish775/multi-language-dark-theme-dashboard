@@ -24,7 +24,7 @@ export default function ChatInput({
     >
       <div className='max-w-4xl mx-auto'>
         <div className='flex items-center gap-2 bg-sidebar rounded-lg border border-border p-2'>
-          <Button size='sm' variant='transparent'>
+          <Button size='sm' variant='default'>
             <Plus className='w-4 h-4' />
           </Button>
           <Input
@@ -33,11 +33,11 @@ export default function ChatInput({
             placeholder={t("placeholder")}
             className='flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0'
           />
-          <Button size='sm' variant='transparent'>
+          <Button size='sm' variant='default'>
             <Mic className='w-4 h-4' />
           </Button>
-          <Button size='sm' variant={"transparent"}>
-            <SendHorizontal className='w-4 h-5 text-secondary' />
+          <Button size='sm' variant={"default"}>
+            <SendHorizontal className='w-4 h-5' />
           </Button>
         </div>
 

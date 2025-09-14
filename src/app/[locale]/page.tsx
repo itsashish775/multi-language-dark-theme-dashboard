@@ -17,6 +17,7 @@ import { LogIn, User } from "lucide-react";
 import Image from "next/image";
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "@/lib/authConfig";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const { instance, accounts } = useMsal();
@@ -40,7 +41,9 @@ export default function LoginPage() {
 
       // After successful login → redirect
       router.push(`/${locale}/chat`);
+      toast.success("Login successful!");
     } catch (error) {
+      toast.error("MSAL login failed:" + error);
       console.error("MSAL login failed:", error);
     }
   };
@@ -64,8 +67,8 @@ export default function LoginPage() {
       </header>
 
       {/* Main Content */}
-      <main className='flex flex-1 items-center justify-center px-4'>
-        <Card className='w-full max-w-md bg-background text-center shadow-2xl rounded-xl border border-foreground'>
+      <main className='flex flex-1 items-center justify-center p-12'>
+        <Card className='max-w-3xl w-[672px] bg-background text-center shadow-2xl rounded-xl px-12 py-14'>
           <CardHeader>
             <div className='flex justify-center mb-2'>
               <Image
@@ -75,7 +78,7 @@ export default function LoginPage() {
                 height={80}
               />
             </div>
-            <CardTitle className='text-lg font-medium'>
+            <CardTitle className='text-4xl font-medium'>
               {t("welcome")} <span className='text-neutral'>{t("title")}</span>
             </CardTitle>
             <p className='text-sm text-neutral-400 mt-1'>{t("subtitle")}</p>
@@ -83,7 +86,7 @@ export default function LoginPage() {
 
           <CardContent className='space-y-4'>
             <Button
-              variant={"secondary"}
+              // variant={"secondary"}
               className='w-full py-3'
               onClick={handleLogin}
               // onClick={() => router.push(`/${locale}/chat`)}
@@ -107,16 +110,16 @@ export default function LoginPage() {
               <Separator className='flex-1 bg-neutral-700' />
             </div>
 
-            <Button
-              variant={"transparent"}
-              className='w-full py-3 text-primary hover:text-secondary'
+            <div
+              // variant={"transparent"}
+              className='w-full flex justify-center py-3 text-base font-medium cursor-pointer hover:font-medium'
             >
-              <User className='mr-2 h-5 w-5' />
-              {t("loginAsGuest")}
-            </Button>
+              <User className='mr-4 h-5 w-5' />
+              <div>{t("loginAsGuest")}</div>
+            </div>
           </CardContent>
 
-          <CardFooter className='flex justify-center text-xs text-neutral-500'>
+          <CardFooter className='flex justify-center content-center text-xs text-neutral-500'>
             © Alsulaiman Group 2025. {t("rightsReserved")}
           </CardFooter>
         </Card>

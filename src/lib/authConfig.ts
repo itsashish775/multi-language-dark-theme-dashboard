@@ -14,3 +14,10 @@ export const msalConfig = {
 export const loginRequest = {
   scopes: ["api://c92a5959-e4e4-438d-8b88-11954bc469e0/access_as_user"],
 };
+
+// {
+//   clientId: "c92a5959-e4e4-438d-8b88-11954bc469e0";
+//   scopes: ["api://c92a5959-e4e4-438d-8b88-11954bc469e0/access_as_user"]
+//   secretId:"07adc539-4b8b-486b-a8c5-509f2689b78d"
+
+// }

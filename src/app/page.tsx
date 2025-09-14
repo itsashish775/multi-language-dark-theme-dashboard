@@ -1,9 +1,17 @@
-'use client';
+"use client";
 
-import { useTranslations } from 'next-intl';
+import { useParams } from "next/navigation";
+import { redirect } from "next/navigation";
+
+// Optionally import supported locales from your config
+// import { supportedLocales, defaultLocale } from "@/i18n/config";
 
 export default function HomePage() {
-  const t = useTranslations('HomePage');
+  const params = useParams();
 
-  return <h1>{t('title')}</h1>;
+  // If there's a locale param, redirect to that locale's homepage, otherwise fallback
+  const locale = typeof params?.locale === "string" ? params.locale : "en";
+  // or use: const locale = params?.locale ?? "en";
+
+  redirect(`/${locale}`);
 }
