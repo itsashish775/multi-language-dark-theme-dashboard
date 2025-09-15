@@ -6,7 +6,7 @@ export const msalConfig = {
     redirectUri: "http://localhost:3000", // must match Azure App Registration
   },
   cache: {
-    cacheLocation: "localStorage",
+    cacheLocation: "", // or leave default
     storeAuthStateInCookie: false,
   },
 };
